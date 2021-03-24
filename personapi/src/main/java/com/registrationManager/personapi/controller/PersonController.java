@@ -2,13 +2,11 @@ package com.registrationManager.personapi.controller;
 
 import com.registrationManager.personapi.dto.request.PersonDTO;
 import com.registrationManager.personapi.dto.response.MessageResponseDTO;
-import com.registrationManager.personapi.entity.Person;
-import com.registrationManager.personapi.repository.PersonRepository;
+import com.registrationManager.personapi.exception.PersonNotFoundException;
 import com.registrationManager.personapi.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,8 +27,20 @@ public class PersonController {
 
     @GetMapping
     public List<PersonDTO>  listAll(){
-       return personService.listAll();
+
+        return personService.listAll();
     }
 
+    @GetMapping("/{id}")
+    public PersonDTO findByID(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
+        personService.delete(id);
+
+    }
 
 }

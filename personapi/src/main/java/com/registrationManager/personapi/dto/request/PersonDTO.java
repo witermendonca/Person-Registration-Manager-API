@@ -33,7 +33,7 @@ public class PersonDTO {
 
     private String birthDate;
 
-    @Valid
+    @Valid //validação de todos atributos de PhoneDTO
     @NotEmpty
     private List<PhoneDTO> phones;
 }
