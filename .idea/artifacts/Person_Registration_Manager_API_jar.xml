@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Person-Registration-Manager-API:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Person_Registration_Manager_API_jar</output-path>
-    <root id="archive" name="Person-Registration-Manager-API.jar" />
-  </artifact>
-</component>
